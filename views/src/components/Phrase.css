@@ -1,0 +1,108 @@
+.phrase {
+    margin-top: 0;
+    padding: 50px 30px;
+    background-image: linear-gradient(325deg, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0.65)), 
+                      url("../assets/img/frontpage/8.jpg");
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .phrase ::selection {
+    background: #fff;
+    color: black;
+    text-shadow: none;
+}
+
+  .phrase label {
+    display: block;
+  }
+
+  .phrase p {
+    color: white;
+    font-size: medium;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 96%;
+    text-align: justify;
+  }
+
+  .phrase blockquote {
+    color: white;
+    font-size:xx-large;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    width: 96%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+
+  .phrase figcaption {
+    color: white;
+    font-size:medium;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 96%;
+    text-align: justify;
+    margin-bottom: 50px;
+  }
+
+  .phrase button {
+    color: #fff;
+    font-weight: 700;
+    font-size:medium;
+    margin-top: 50px;
+    margin-bottom: 65px;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+  }
+  .phrase button svg {
+    font-size: 25px;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    line-height: 1;
+  }
+  .phrase button:hover svg {
+    margin-left: 25px;
+  }
+  
+  #marsImage{
+    right: 3%;
+    position: absolute;
+    width: 40%;
+    animation: updown 75s linear infinite;
+  }
+
+  #moonImage{
+    position: relative;
+    width: 70%;
+    animation: updown 50s linear infinite;
+  }
+  @keyframes updown {
+      0% {
+          transform: translateY(-35px);
+      }
+      50% {
+          transform: translateY(35px);
+      }
+      100% {
+          transform: translateY(-35px);
+      }
+  }
+  .txt-rotate > .wrap {
+    border-right: 0.08em solid #666;
+  }
+  
+  #iktanLogo {
+    width: 20%;
+    margin-bottom: 50px;
+    float: left;
+  }
+
+  #backgroundContainer{
+    background-image: url("../assets/img/StarsBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }

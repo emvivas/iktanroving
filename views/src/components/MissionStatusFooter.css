@@ -1,0 +1,50 @@
+.missionStatusFooter {
+    top: 100%;
+    margin-top: 0;
+    padding: 75px 30px 30px 105px;
+    position: relative;
+    background-color: black;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+  }
+
+  .missionStatusFooter ::selection {
+    background: white;
+    color: black;
+    text-shadow: none;
+  }
+
+  .missionStatusFooter img {
+    display: inline-block;
+    width: 13%;
+    margin: 20px;
+    align-items: center;
+  }
+
+  .missionStatusFooter p {
+    font-size: small;
+    color:white;
+    letter-spacing: 1px;
+    text-align: justify;
+    margin-top: 20px;
+  }
+
+  .missionStatusFooter figcaption label p {
+    margin-top: 5px;
+    font-size: smaller;
+  }
+  
+  .missionStatusFooter .social-icon{
+    margin-left: 0;
+    float:right;
+  }
+
+  #tecLogomissionStatusFooter {
+    width: 37%;
+  }
+
+  #hercmissionStatusFooter {
+    width: 15%;
+  }

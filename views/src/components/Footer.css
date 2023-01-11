@@ -1,0 +1,50 @@
+.footer {
+    top: 100%;
+    margin-top: 0;
+    padding: 75px 30px 30px 30px;
+    position: relative;
+    background-color: black;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+  }
+
+  .footer ::selection {
+    background: white;
+    color: black;
+    text-shadow: none;
+  }
+
+  .footer img {
+    display: inline-block;
+    width: 13%;
+    margin: 20px;
+    align-items: center;
+  }
+
+  .footer p {
+    font-size: small;
+    color:white;
+    letter-spacing: 1px;
+    text-align: justify;
+    margin-top: 20px;
+  }
+
+  .footer figcaption label p {
+    margin-top: 5px;
+    font-size: smaller;
+  }
+  
+  .footer .social-icon{
+    margin-left: 0;
+    float:right;
+  }
+
+  #tecLogoFooter {
+    width: 37%;
+  }
+
+  #hercFooter {
+    width: 15%;
+  }

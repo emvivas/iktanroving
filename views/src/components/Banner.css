@@ -1,0 +1,103 @@
+.banner {
+    margin-top: 0;
+    padding: 315px 30px 100px 30px;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.35) 50%), 
+                      linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.005)),
+                      url("../assets/img/frontpage/0.jpg");
+    opacity: 1;
+    background-position: 25% 75%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation:mymove 20s linear infinite;
+  }
+
+@keyframes mymove {
+    from {
+        background-position: 25% 75%;
+    }
+    to {
+        background-position: top right;
+    }
+}
+
+  .banner ::selection {
+    background: #fff;
+    color: black;
+    text-shadow: none;
+  }
+
+  .banner label {
+    display: block;
+  }
+  
+  .banner h1 {
+    color: white;
+    text-shadow: black 0.01em 0.01em 0.05em;
+    font-size: 75px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+    padding-bottom: 25px;
+  }
+  .banner h2 {
+    color: white;
+    text-shadow: black 0.01em 0.01em 0.05em;
+    font-size: x-large;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .banner h3 {
+    color: white;
+    text-shadow: black 0.01em 0.01em 0.05em;
+    font-size: large;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .banner p {
+    color: white;
+    text-shadow: black 0.2em 0.2em 0.2em;
+    font-size: medium;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    width: 75%;
+    text-align: justify;
+  }
+  .banner button {
+    color: #fff;
+    font-weight: 700;
+    font-size:medium;
+    margin-top: 70px;
+    margin-bottom: 0px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+  }
+  .banner button svg {
+    font-size: 25px;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    line-height: 1;
+  }
+  .banner button:hover svg {
+    margin-left: 25px;
+  }
+
+  #tecLogo {
+    padding-top: 20px;
+    width: 45%;
+  }
+
+  #herc {
+    padding-top: 20px;
+    padding-left: 30px;
+    width: 22%;
+  }
+  

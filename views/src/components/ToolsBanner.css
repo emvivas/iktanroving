@@ -1,0 +1,120 @@
+.toolsBanner {
+  margin-top: 0;
+  padding: 75px 30px 50px 105px;
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.35) 50%), 
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.005)),
+                    url("../assets/img/frontpage/0.jpg");
+  opacity: 1;
+  background-position: 25% 75%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.toolsBanner ::selection {
+  background: #fff;
+  color: black;
+  text-shadow: none;
+}
+
+.toolsBanner label {
+  display: block;
+}
+
+.toolsBanner h1 {
+  color: white;
+  text-shadow: black 0.01em 0.01em 0.05em;
+  font-size: 75px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+  padding-bottom: 25px;
+}
+.toolsBanner h2 {
+  color: white;
+  text-shadow: black 0.01em 0.01em 0.05em;
+  font-size: x-large;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+.toolsBanner h3 {
+  color: white;
+  text-shadow: black 0.01em 0.01em 0.05em;
+  font-size: large;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+.toolsBanner p {
+  color: white;
+  text-shadow: black 0.2em 0.2em 0.2em;
+  font-size: medium;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+  width: 75%;
+  text-align: justify;
+}
+.toolsBanner button {
+  color: #fff;
+  font-weight: 700;
+  font-size:medium;
+  margin-top: 70px;
+  margin-bottom: 0px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+.toolsBanner button svg {
+  font-size: 25px;
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+  line-height: 1;
+}
+.toolsBanner button:hover svg {
+  margin-left: 25px;
+}
+
+.toolsBanner .topics{
+  float:right;
+}
+
+.toolsBanner .topics a {
+  margin: 10px 30px 10px 0px;
+  font-size: smaller;
+  font-weight: 500;
+  outline: none;
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+}
+
+.toolsBanner .topics label {
+  margin: 30px 0px 10px 0px;
+  font-size: medium;
+}
+
+
+.toolsBanner .topics a:link {
+  color: #C0C0C0;
+}
+
+.toolsBanner .topics a:visited {
+  color: #C0C0C0;
+}
+
+.toolsBanner .topics a:focus {
+  color: white;
+}
+
+.toolsBanner .topics a:hover {
+  color: white;
+}
+
+.toolsBanner .topics a:active {
+  color: #C0C0C0;
+}

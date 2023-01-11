@@ -1,0 +1,145 @@
+.team {
+    margin-top: 0;
+    padding: 75px 30px 50px 30px;
+    background-color: white;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+  }
+
+  .team ::selection {
+    background: #C0C0C0;
+    color: black;
+    text-shadow: none;
+}
+
+  .team label {
+    display: block;
+  }
+
+  .team hr{
+    margin: 50px 0px 0px 0px;
+  }
+
+  .team h2 {
+    font-size: 50px;
+    font-weight: 350;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .team h3 {
+    font-size: xx-large;
+    font-weight: 350;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    margin-bottom: 35px;
+    margin-top: 90px;
+    display: block;
+  }
+
+  .team p {
+    color: #141414;
+    font-size: medium;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 96%;
+    text-align: justify;
+    text-indent: 30px;
+  }
+
+  .team ol{
+    margin: 30px 0px;
+  }
+
+  .team ul{
+    margin: 30px 0px;
+  }
+
+  .team li{
+    margin: 10px 0px;
+  }
+
+  .team figcaption label p {
+    margin-top: 15px;
+    font-size: smaller;
+  }
+
+  .team button {
+    color: black;
+    font-weight: 500;
+    font-size:medium;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+  }
+  .team button svg {
+    font-size: 25px;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    line-height: 1;
+  }
+  .team button:hover svg {
+    margin-left: 25px;
+  }
+
+  .team .mainImage figure {
+    display: inline-block;
+    margin-top: 60px;
+  }
+
+  .team .mainImage {
+    margin: 90px 0px 35px 0px;
+  }
+
+  .team .mixImage{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .team .imageSection {
+    display: block;
+    width: 100%;
+  }
+
+  .team .topics a {
+    margin: 10px 30px 10px 0px;
+    font-size: smaller;
+    font-weight: 500;
+    outline: none;
+    text-decoration: none;
+    text-decoration-thickness: 1px;
+  }
+
+  .team .topics label {
+    margin: 30px 0px 10px 0px;
+    font-size: medium;
+  }
+  
+  
+  .team .topics a:link {
+    color: #555;
+  }
+  
+  .team .topics a:visited {
+    color: #555;
+  }
+  
+  .team .topics a:focus {
+    color: #000;
+  }
+  
+  .team .topics a:hover {
+    color: #000;
+  }
+  
+  .team .topics a:active {
+    color: #555;
+  }

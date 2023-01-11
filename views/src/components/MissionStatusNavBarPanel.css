@@ -1,0 +1,175 @@
+.missionStatusNavBarPanel {
+    padding: 95px 0;
+    position: fixed;
+    width: 75px;
+    height:100%;
+    top: 0;
+    z-index: 9999;
+    background-color: black;
+}
+
+.missionStatusNavBarPanel ::selection {
+  background: white;
+  color: black;
+  text-shadow: none;
+}
+
+.missionStatusNavBarPanel label {
+  display: block;
+}
+
+.missionStatusNavBarPanel hr{
+  margin: 50px 0px 0px 0px;
+}
+
+.missionStatusNavBarPanel h2 {
+  font-size: 50px;
+  font-weight: 350;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.missionStatusNavBarPanel h3 {
+  font-size: xx-large;
+  font-weight: 350;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 35px;
+  margin-top: 90px;
+  display: block;
+}
+
+.missionStatusNavBarPanel p {
+  color: white;
+  font-size: smaller;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+  text-align: justify;
+  text-indent: 30px;
+}
+
+.missionStatusNavBarPanel ol{
+  margin: 30px 0px;
+}
+
+.missionStatusNavBarPanel ul{
+  margin: 30px 0px;
+}
+
+.missionStatusNavBarPanel li{
+  margin: 10px 0px;
+}
+
+.missionStatusNavBarPanel figcaption label p {
+  margin-top: 15px;
+  font-size: smaller;
+}
+
+.missionStatusNavBarPanel button {
+  color: white;
+  font-weight: 500;
+  font-size:medium;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+}
+.missionStatusNavBarPanel button svg {
+  font-size: 25px;
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+  line-height: 1;
+}
+.missionStatusNavBarPanel button:hover svg {
+  margin-left: 25px;
+}
+
+.missionStatusNavBarPanel .mainImage figure {
+  display: inline-block;
+  margin-top: 60px;
+}
+
+.missionStatusNavBarPanel .mainImage {
+  margin: 90px 0px 35px 0px;
+}
+
+.missionStatusNavBarPanel .mixImage{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.missionStatusNavBarPanel .imageSection {
+  display: block;
+  width: 100%;
+}
+
+.missionStatusNavBarPanel .topics a {
+  display: grid;
+  place-items: center;
+  font-size: smaller;
+  font-weight: 500;
+  outline: none;
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+}
+
+.missionStatusNavBarPanel .topics label {
+  margin: 30px 0px 10px 0px;
+  font-size: small;
+}
+
+
+.missionStatusNavBarPanel .topics a:link {
+  color: white;
+  opacity: 0.7;
+}
+
+.missionStatusNavBarPanel .topics a:visited {
+  color: white;
+  opacity: 0.7;
+}
+
+.missionStatusNavBarPanel .topics a:focus {
+  color: white;
+  opacity: 0.7;
+}
+
+.missionStatusNavBarPanel .topics a:hover {
+  color: white;
+  opacity: 1;
+}
+
+.missionStatusNavBarPanel .topics a:active {
+  color: white;
+  opacity: 0.7;
+}
+
+.missionStatusNavBarPanel .graph {
+  display: grid;
+  place-items: center;
+}
+
+.missionStatusNavBarPanel .monitoringSection {
+  margin-bottom: 50px;
+}
+
+.missionStatusNavBarPanel svg {
+  width: 70%;
+  height: 70%;
+  fill: white;
+}
+
+.missionStatusNavBarPanel .panelButton {
+  margin: 0px auto 40px auto !important;
+}
+
+.missionStatusNavBarPanel .panelButton:hover {
+  fill: white;
+  color:#000;
+}

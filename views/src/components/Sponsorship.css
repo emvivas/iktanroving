@@ -1,0 +1,86 @@
+.sponsorship {
+    margin-top: 0;
+    padding: 60px 30px;
+    background-image: linear-gradient(325deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                      url("../assets/img/frontpage/10.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .sponsorship ::selection {
+    background: #fff;
+    color: black;
+    text-shadow: none;
+}
+
+  .sponsorship label {
+    display: block;
+  }
+
+  .sponsorship p {
+    color: white;
+    font-size: medium;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 96%;
+    text-align: justify;
+  }
+
+  .sponsorship figcaption label p {
+    margin-top: 30px;
+    font-size: smaller;
+  }
+
+  .sponsorship blockquote {
+    color: white;
+    font-size:xx-large;
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    width: 96%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+
+  .sponsorship figcaption {
+    color: white;
+    font-size:medium;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 96%;
+    text-align: justify;
+    margin-bottom: 50px;
+  }
+
+  .sponsorship button {
+    color: #fff;
+    font-weight: 700;
+    font-size:medium;
+    margin-top: 50px;
+    margin-bottom: 65px;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+  }
+  .sponsorship button svg {
+    font-size: 25px;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    line-height: 1;
+  }
+  .sponsorship button:hover svg {
+    margin-left: 25px;
+  }
+  
+  #iktanLogo {
+    width: 20%;
+    margin: 50px 0px;
+    float: left;
+  }
+
+  .sponsorsLogos img {
+    display: inline-block;
+    width:40%;
+    margin: 40px 20px;
+  }
