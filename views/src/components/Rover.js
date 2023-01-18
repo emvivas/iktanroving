@@ -45,7 +45,7 @@ export const Rover = () => {
         <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
                   <label><h3 id="tool">Tool</h3></label>
-                  <label><p>Our rover is equipped with a task tool, allowing it to complete a variety of tasks on the obstacle course. This tool have been carefully designed and built by our team, to ensure that it is the most advanced and efficient tool possible.</p></label>
+                  <label><p>Our rover is equipped with a range of task tools made up of a main body different modules that the drivers could use for the different circumstances that the obstacle course proposes. These tools have been carefully designed and built by our team, to ensure that they are the most advanced and efficient tools possible.</p></label>
                   <button onClick={() => navigate("/missionStatus")}>Learn more<ArrowRightCircle size={25} /></button>
           </Col>
           <Col xs={12} md={6} xl={5}>
