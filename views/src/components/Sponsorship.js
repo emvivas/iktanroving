@@ -28,8 +28,14 @@ export const Sponsorship = () => {
                 <figure>
                   <img id="iktanLogo" src={iktanLogo} alt="IKTAN Roving's logo."/>
                   <label><p><blockquote>Thank you so much!</blockquote></p></label>
-                  <label><p><small>We are the team of Mexican students that promotes the participation of young people in high impact engineering projects. We have competed for 10 years in the NASA Human Exploration Rover Challenge competition, we hold the first place prize in the 2022 edition.</small></p></label>
-                  <figcaption><label><p>IKTAN Roving Team.</p></label></figcaption>
+                  <label>
+                    <p>
+                      <small>
+                        We cannot express enough gratitude for your support and sponsorship of our team in the NASA Human Exploration Rover Challenge. Your generosity has made a significant impact on our ability to participate in this competition and has allowed us to bring our innovative rover design to life, especially for the help of ---
+                      </small>
+                    </p>
+                  </label>
+                  <figcaption><label><p>Sincerely, Iktan Roving</p></label></figcaption>
                   </figure>
           </Col>
         </Row>
