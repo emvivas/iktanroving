@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Rover` (
   `properties` VARCHAR(150) NULL,
   `description` TINYTEXT NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   UNIQUE INDEX `denomination_UNIQUE` (`denomination` ASC) VISIBLE,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Participant` (
   `zip` VARCHAR(15) NULL,
   `location` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`TeamMember` (
   `campusNumber` TINYINT UNSIGNED NOT NULL,
   `tshirtSize` VARCHAR(3) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Area` (
   `denomination` VARCHAR(30) NOT NULL,
   `description` TINYTEXT NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`AreaMember` (
   `Area_identificator` TINYINT UNSIGNED NOT NULL,
   `activities` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Crewmate` (
   `TeamMember_identificator` SMALLINT UNSIGNED NOT NULL,
   `description` VARCHAR(150) NOT NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Module` (
   `version` VARCHAR(15) NULL,
   `webpage` VARCHAR(320) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   UNIQUE INDEX `code_UNIQUE` (`code` ASC) VISIBLE,
@@ -190,12 +190,13 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `iktanroving`.`RoverImplementation` (
   `identificator` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `printedCircuitBoard` VARCHAR(30) NOT NULL,
   `Rover_identificator` TINYINT UNSIGNED NOT NULL,
   `Module_identificator` TINYINT UNSIGNED NOT NULL,
   `properties` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
-  PRIMARY KEY (`identificator`),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (`identificator`, `printedCircuitBoard`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   INDEX `fk_RoverImplementation_Rover1_idx` (`Rover_identificator` ASC) VISIBLE,
   INDEX `fk_RoverImplementation_Module1_idx` (`Module_identificator` ASC) VISIBLE,
@@ -223,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Tool` (
   `description` TINYTEXT NULL,
   `material` VARCHAR(25) NOT NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   INDEX `fk_Tool_Rover1_idx` (`Rover_identificator` ASC) VISIBLE,
@@ -244,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`ToolImplementation` (
   `Module_identificator` TINYINT UNSIGNED NOT NULL,
   `properties` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   INDEX `fk_ToolImplementation_Tool1_idx` (`Tool_identificator` ASC) VISIBLE,
@@ -278,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Gadget` (
   `webpage` VARCHAR(320) NULL,
   `material` VARCHAR(25) NOT NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   INDEX `fk_Gadget_Rover1_idx` (`Rover_identificator` ASC) VISIBLE,
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -300,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`CrewmateImplementation` (
   `Module_identificator` TINYINT UNSIGNED NOT NULL,
   `properties` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   INDEX `fk_CrewmateImplementation_Crewmate1_idx` (`Crewmate_identificator` ASC) VISIBLE,
@@ -332,10 +333,12 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Measurement` (
   `variable` VARCHAR(30) NOT NULL,
   `units` VARCHAR(10) NOT NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
-  UNIQUE INDEX `variable_UNIQUE` (`variable` ASC) VISIBLE)
+  UNIQUE INDEX `variable_UNIQUE` (`variable` ASC) VISIBLE,
+  INDEX `variable_INDEX` (`variable` ASC) VISIBLE,
+  INDEX `units_INDEX` (`units` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -348,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`ToolMonitoring` (
   `ToolImplementation_identificator` SMALLINT UNSIGNED NOT NULL,
   `notes` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -376,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`RoverMonitoring` (
   `RoverImplementation_identificator` SMALLINT UNSIGNED NOT NULL,
   `notes` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -404,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`CrewmateMonitoring` (
   `CrewmateImplementation_identificator` TINYINT UNSIGNED NOT NULL,
   `notes` VARCHAR(150) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -439,7 +442,8 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`RoverObservation` (
     FOREIGN KEY (`RoverMonitoring_identificator`)
     REFERENCES `iktanroving`.`RoverMonitoring` (`identificator`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON UPDATE CASCADE,
+  INDEX `RoverObservation_register_INDEX` (`register` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -459,7 +463,8 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`ToolObservation` (
     FOREIGN KEY (`ToolMonitoring_identificator`)
     REFERENCES `iktanroving`.`ToolMonitoring` (`identificator`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON UPDATE CASCADE,
+  INDEX `ToolObservation_register_INDEX` (`register` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -479,7 +484,8 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`CrewmateObservation` (
     FOREIGN KEY (`CrewmateMonitoring_identificator`)
     REFERENCES `iktanroving`.`CrewmateMonitoring` (`identificator`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON UPDATE CASCADE,
+  INDEX `CrewmateObservation_register_INDEX` (`register` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -493,7 +499,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`CrewmateProfile` (
   `value` DOUBLE NOT NULL,
   `notes` VARCHAR(50) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -522,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`ToolProfile` (
   `value` DOUBLE NOT NULL,
   `notes` VARCHAR(50) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -551,7 +557,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`ModuleProfile` (
   `value` DOUBLE NOT NULL,
   `notes` VARCHAR(50) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -580,7 +586,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`GadgetProfile` (
   `value` DOUBLE NOT NULL,
   `notes` VARCHAR(50) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
@@ -609,7 +615,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`RoverProfile` (
   `value` DOUBLE NOT NULL,
   `notes` VARCHAR(50) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
-  `update` DATETIME NOT NULL DEFAULT NOW(),
+  `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   `status` BIT NOT NULL DEFAULT 1,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,

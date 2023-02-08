@@ -141,7 +141,7 @@ END//
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE registerRoverObservation(OUT _identificator SMALLINT UNSIGNED, IN _RoverMonitoring_identificator SMALLINT UNSIGNED, IN _value double, IN _notes VARCHAR(50))
+CREATE PROCEDURE registerRoverObservation(OUT _identificator SMALLINT UNSIGNED, IN _RoverMonitoring_identificator SMALLINT UNSIGNED, IN _value DOUBLE, IN _notes VARCHAR(50))
 BEGIN
 	SET _identificator = NULL;
     CALL validateString(_notes);
@@ -151,11 +151,12 @@ END//
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE registerRoverImplementation(OUT _identificator SMALLINT UNSIGNED, IN _Rover_identificator TINYINT UNSIGNED, IN _Module_identificator TINYINT UNSIGNED, IN _properties VARCHAR(150))
+CREATE PROCEDURE registerRoverImplementation(OUT _identificator SMALLINT UNSIGNED, IN _printedCircuitBoard VARCHAR(30), IN _Rover_identificator TINYINT UNSIGNED, IN _Module_identificator TINYINT UNSIGNED, IN _properties VARCHAR(150))
 BEGIN
 	SET _identificator = NULL;
+    CALL validateString(_printedCircuitBoard);
     CALL validateString(_properties);
-    INSERT INTO RoverImplementation(Rover_identificator, Module_identificator, properties) VALUE ( _Rover_identificator, _Module_identificator, _properties);
+    INSERT INTO RoverImplementation(printedCircuitBoard, Rover_identificator, Module_identificator, properties) VALUE (_printedCircuitBoard, _Rover_identificator, _Module_identificator, _properties);
 	SET _identificator = @@identity;
 END//
 DELIMITER ;
@@ -286,5 +287,137 @@ BEGIN
     INSERT INTO AreaMember(TeamMember_identificator , Area_identificator ,activities) VALUE 
     (_TeamMember_identificator , _Area_identificator ,_activities);
     SET _identificator = @@identity;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE registerWheelRoverStatus(IN PCB VARCHAR(30), IN accelerationX DOUBLE, IN accelerationY DOUBLE, IN accelerationZ DOUBLE, IN rotationX DOUBLE, IN rotationY DOUBLE, IN rotationZ DOUBLE, IN rotationVelocity DOUBLE, IN RPM DOUBLE, IN surfaceDistance DOUBLE, IN internalTemperature DOUBLE)
+BEGIN
+    CASE PCB
+		WHEN "TopRightWheel" THEN
+			CALL registerRoverObservation(@id, 1, accelerationX, NULL);
+            CALL registerRoverObservation(@id, 2, accelerationY, NULL);
+            CALL registerRoverObservation(@id, 3, accelerationZ, NULL);
+            CALL registerRoverObservation(@id, 4, rotationX, NULL);
+            CALL registerRoverObservation(@id, 5, rotationY, NULL);
+            CALL registerRoverObservation(@id, 6, rotationZ, NULL);
+            CALL registerRoverObservation(@id, 8, rotationVelocity, NULL);
+            CALL registerRoverObservation(@id, 9, RPM, NULL);
+            CALL registerRoverObservation(@id, 10, surfaceDistance, NULL);
+            CALL registerRoverObservation(@id, 7, internalTemperature, NULL);
+		WHEN "TopLeftWheel" THEN
+			SET @id = NULL;
+		WHEN "BottomRightWheel" THEN
+			SET @id = NULL;
+		WHEN "BottomLeftWheel" THEN
+			SET @id = NULL;
+    END CASE;
+END//
+DELIMITER ;
+
+-- Views
+
+DELIMITER //
+CREATE PROCEDURE getRoverAccelerationTimeSerie(IN PCB VARCHAR(30), IN competitionYear SMALLINT UNSIGNED, IN units VARCHAR(10))
+BEGIN
+    SELECT X.x, Y.y, Z.z, X.Time FROM (
+		SELECT RoverObs.value AS "x", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "X Acceleration" AND Measurement.units = units
+	) AS X INNER JOIN (
+		SELECT RoverObs.value AS "y", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "Y Acceleration" AND Measurement.units = units
+	) AS Y ON X.Time = Y.Time INNER JOIN (
+		SELECT RoverObs.value AS "z", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "Z Acceleration" AND Measurement.units = units
+	) AS Z ON X.Time = Z.Time;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE getRoverRotationTimeSerie(IN PCB VARCHAR(30), IN competitionYear SMALLINT UNSIGNED, IN units VARCHAR(10))
+BEGIN
+	SELECT X.x, Y.y, Z.z, X.Time FROM (
+		SELECT RoverObs.value AS "x", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "X Rotation" AND Measurement.units = units
+	) AS X INNER JOIN (
+		SELECT RoverObs.value AS "y", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "Y Rotation" AND Measurement.units = units
+	) AS Y ON X.Time = Y.Time INNER JOIN (
+		SELECT RoverObs.value AS "z", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "Z Rotation" AND Measurement.units = units
+	) AS Z ON X.Time = Z.Time;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE getRoverMeasurementTimeSerie(IN PCB VARCHAR(30), IN competitionYear SMALLINT UNSIGNED, IN variable VARCHAR(30), IN units VARCHAR(10), IN displayOrder BOOL)
+BEGIN
+    IF displayOrder THEN
+		SELECT RoverObs.value AS "Value", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = variable AND Measurement.units = units 
+		ORDER BY RoverObs.register DESC;
+	ELSE
+		SELECT RoverObs.value AS "Value", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = variable AND Measurement.units = units 
+		ORDER BY RoverObs.register ASC;
+    END IF;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE getRoverMeasurement(IN PCB VARCHAR(30), IN competitionYear SMALLINT UNSIGNED, IN variable VARCHAR(30), IN units VARCHAR(10))
+BEGIN
+	SELECT RoverObs.value AS "Value" FROM RoverObservation AS RoverObs 
+	INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+	INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+	INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+	INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+	WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = variable AND Measurement.units = units 
+	ORDER BY RoverObs.register ASC;
+END//
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE getRoverRecentMeasurement(IN PCB VARCHAR(30), IN competitionYear SMALLINT UNSIGNED, IN variable VARCHAR(30), IN units VARCHAR(10))
+BEGIN
+	SELECT RoverObs.value AS "Value" FROM RoverObservation AS RoverObs 
+	INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
+	INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
+	INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
+	INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
+	WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = variable AND Measurement.units = units 
+	ORDER BY RoverObs.register DESC LIMIT 1;
 END//
 DELIMITER ;
