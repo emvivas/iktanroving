@@ -20,8 +20,6 @@ export const Footer = () => {
           </Col>
           <Col size={12} sm={6}>
             <figure>
-            <label><p><small>We are the team of Mexican students that promotes the participation of young people in high impact engineering projects. We have competed for 10 years in the NASA Human Exploration Rover Challenge competition, we hold the first place prize in the 2022 edition.</small></p></label>
-            <figcaption><label><p>IKTAN Roving 2023.</p></label></figcaption>
             <div className="social-icon">
               <a href="https://www.tiktok.com/@iktan_roving" target="_blank" rel="noopener noreferrer"><img src={navIcon1} alt="Icon" /></a>
               <a href="https://www.facebook.com/IKTANRoving" target="_blank" rel="noopener noreferrer"><img src={navIcon2} alt="" /></a>
