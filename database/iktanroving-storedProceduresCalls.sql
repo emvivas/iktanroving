@@ -70,3 +70,7 @@ SELECT COUNT(*) FROM RoverObservation;
 CALL getRoverAccelerationTimeSerie("TopRightWheel", 2023, "m/s^2");
 -- delete from roverobservation where identificator > 0;
 -- describe RoverObservation;
+
+select * from RoverObservation;
+
+CALL registerWheelRoverStatus("TopRightWheel", 5.0, 3.0, 5.0, 3.7, 2.0, 0.6, 0.0, 3.0, 105.0, 30.0);
