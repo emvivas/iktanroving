@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import img1 from "../assets/img/frontpage/1.jpg";
 import img2 from "../assets/img/frontpage/2.jpg";
@@ -31,21 +31,55 @@ import img28 from "../assets/img/frontpage/28.jpg";
 import img29 from "../assets/img/frontpage/29.jpg";
 import img30 from "../assets/img/frontpage/30.jpg";
 import img31 from "../assets/img/frontpage/31.jpg";
-import 'animate.css';
+import "animate.css";
 import { useNavigate } from "react-router-dom";
 import "./MissionStatusBanner.css";
 
 export const MissionStatusBanner = () => {
   const navigate = useNavigate();
-  const img = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img25, img26, img27, img28, img29, img30, img31]
+  const img = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+    img10,
+    img11,
+    img12,
+    img13,
+    img14,
+    img15,
+    img16,
+    img17,
+    img18,
+    img19,
+    img20,
+    img21,
+    img22,
+    img23,
+    img24,
+    img25,
+    img26,
+    img27,
+    img28,
+    img29,
+    img30,
+    img31,
+  ];
 
   useEffect(() => {
-    const interval = setInterval(() => {  
-      let image = img[Math.floor(Math.random()*img.length)]
-    document.getElementById("mission").style.backgroundImage = `linear-gradient(135deg, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.35) 50%), 
-    linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.005)), url(${image})`
-    }, 20000)
-    return () => clearInterval(interval)
+    const interval = setInterval(() => {
+      let image = img[Math.floor(Math.random() * img.length)];
+      document.getElementById(
+        "mission"
+      ).style.backgroundImage = `linear-gradient(135deg, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 0.35) 50%), 
+    linear-gradient(90deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.005)), url(${image})`;
+    }, 20000);
+    return () => clearInterval(interval);
   });
 
   return (
@@ -53,25 +87,60 @@ export const MissionStatusBanner = () => {
       <Container>
         <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
-              <div className="animate__animated animate__fadeIn">
-                  <label><h3>IKTAN Roving</h3></label>
-                  <label><h1>Mission Status</h1></label>
-                  <label><h2>NASA HERC Team</h2></label>
-                  <label><p>We are the team of Mexican students that promotes the participation of young people in high impact engineering projects. We have competed for 10 years in the NASA Human Exploration Rover Challenge competition, we hold the first place prize in the 2022 edition.</p></label>
-              </div>
+            <div className="animate__animated animate__fadeIn">
+              <label>
+                <h3>IKTAN Roving</h3>
+              </label>
+              <label>
+                <h1>Mission Status</h1>
+              </label>
+              <label>
+                <h2>Meet the control panel!</h2>
+              </label>
+              <label>
+                <p>
+                  This page is dedicated to everything related to data
+                  visualization. Its almost as you can be part of this
+                  experience with live data directly fed from the rover and our
+                  pilots. In this section you´ll find a summarized version of
+                  the most important data we compiled at the top section and a
+                  very detailed collection of data below it.
+                </p>
+              </label>
+            </div>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <div className="topics">
               <label>Explore our different team workspaces:</label>
-              <span><a href="/#vehicle" onClick={()=>navigate("/")}>Vehicle</a></span>
-              <span><a href="/#tool" onClick={()=>navigate("/")}>Tool</a></span>
-              <span><a href="/#telemetry" onClick={()=>navigate("/")}>Telemetry</a></span>
-              <span><a href="/#home" onClick={()=>navigate("/")}>STEM</a></span>
-              <span><a href="/#home" onClick={()=>navigate("/")}>Networks</a></span>
+              <span>
+                <a href="/#vehicle" onClick={() => navigate("/")}>
+                  Vehicle
+                </a>
+              </span>
+              <span>
+                <a href="/#tool" onClick={() => navigate("/")}>
+                  Tool
+                </a>
+              </span>
+              <span>
+                <a href="/#telemetry" onClick={() => navigate("/")}>
+                  Telemetry
+                </a>
+              </span>
+              <span>
+                <a href="/#home" onClick={() => navigate("/")}>
+                  STEM
+                </a>
+              </span>
+              <span>
+                <a href="/#home" onClick={() => navigate("/")}>
+                  Networks
+                </a>
+              </span>
             </div>
           </Col>
         </Row>
       </Container>
     </section>
-  )
-}
+  );
+};
