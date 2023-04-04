@@ -15,8 +15,10 @@ export const GeneralBanner = () => {
           <Col xs={12} md={6} xl={7}>
               <div className="animate__animated animate__fadeIn">
                   <label><h1>General Status</h1></label>
-                  <label><h2>NASA HERC Team</h2></label>
-                  <label><p>We are the team of Mexican students that promotes the participation of young people in high impact engineering projects. We have competed for 10 years in the NASA Human Exploration Rover Challenge competition, we hold the first place prize in the 2022 edition.</p></label>
+                  <label><h2>Failure is not an option</h2></label>
+                  <label><p>In this section you´ll find a summarized version of
+                  the most important data we compiled at the top section and a
+                  very detailed collection of data below it.</p></label>
               </div>
           </Col>
           <Col xs={12} md={6} xl={5}>

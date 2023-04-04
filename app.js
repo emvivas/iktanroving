@@ -18,18 +18,29 @@ const server = http.createServer(app);
 
 // IKTAN Roving database access
 
-export const pool = createPool({
+const pool = createPool({
     host: MYSQL_HOST,
     port: MYSQL_PORT,
     user: MYSQL_USER,
     password: MYSQL_PASSWORD,
-    database: MYSQL_DATABASE
+    database: MYSQL_DATABASE,
+    connectionLimit: 10
 });
 
 
 // IKTAN Roving Telemetry objects' tokens
 
-const wheelTokens = {"TopRightWheel": "VG9wUmlnaHRXaGVlbDp0cnIhU0NjRUBYZTJ4VDM1SmxKMw=="};
+const seatTokens = {
+                    "PilotSeat": "UGlsb3RTZWF0OjFhcE1MXkZSTjJCQCR2NzQzNHVR",
+                    "CopilotSeat": "VG9wTGVmdFdoZWVsOjNCSFhAWjV2cWluJUdjMyYzY0Uq"
+                    };
+
+const wheelTokens = {
+                    "TopRightWheel": "VG9wUmlnaHRXaGVlbDp0cnIhU0NjRUBYZTJ4VDM1SmxKMw==",
+                    "TopLeftWheel": "VG9wTGVmdFdoZWVsOjNCSFhAWjV2cWluJUdjMyYzY0Uq",
+                    "BottomRightWheel": "VG9wUmlnaHRXaGVlbDp0cnIhU0NjRUBYZTJ4VDM1SmxKMw==",
+                    "BottomLeftWheel": "VG9wUmlnaHRXaGVlbDp0cnIhU0NjRUBYZTJ4VDM1SmxKMw=="
+                    };
 
 
 // WebSocket paths' configuration
@@ -44,9 +55,9 @@ const webSocketServerSettings = {
     allowEIO3: true };
 const wheelWebSocketServer = new WebSocketServer(server, { path: '/wheel/socket.io', ...webSocketServerSettings });
 const seatWebSocketServer = new WebSocketServer(server, { path: '/seat/socket.io', ...webSocketServerSettings });
-const toolWebSocketServer = new WebSocketServer(server, { path: '/tool/socket.io', ...webSocketServerSettings });
-const sampleWebSocketServer = new WebSocketServer(server, { path: '/sample/socket.io', ...webSocketServerSettings });
-const gadgetWebSocketServer = new WebSocketServer(server, { path: '/gadget/socket.io', ...webSocketServerSettings });
+//const toolWebSocketServer = new WebSocketServer(server, { path: '/tool/socket.io', ...webSocketServerSettings });
+//const sampleWebSocketServer = new WebSocketServer(server, { path: '/sample/socket.io', ...webSocketServerSettings });
+//const gadgetWebSocketServer = new WebSocketServer(server, { path: '/gadget/socket.io', ...webSocketServerSettings });
 
 
 // Server middlewares and extensions
@@ -80,7 +91,8 @@ wheelWebSocketServer.use((socket, next) => {
     const clientToken = authClientHeader.split(' ')[1];
     console.log(`WHEEL CLIENT STATUS [${socket.id}].\tAuthorization credentials: ${authClientHeader}`);
     console.log(`WHEEL CLIENT STATUS [${socket.id}].\tServer request:\n`, socket.request);
-    if (clientToken === wheelTokens["TopRightWheel"]) {
+    if (clientToken === wheelTokens["TopRightWheel"] || 
+        clientToken === wheelTokens["TopLeftWheel"]) {
       return next();
     }
     console.log(`WHEEL CLIENT STATUS [${socket.id}].\tAuthentication error.`);
@@ -97,9 +109,44 @@ wheelWebSocketServer.on("connection", (socket) => {
     socket.on("sendingDataClientAction", async (message)=>{
         console.log(message);
         if(message.PCB)
-            await pool.query("CALL registerWheelRoverStatus(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", [message.PCB, message.acceleration.x, message.acceleration.y, message.acceleration.z, message.rotation.x, message.rotation.y, message.rotation.z, message.rotationVelocity, message.RPM, message.surfaceDistance, message.internalTemperature]);
+            await pool.query("CALL registerWheelRoverStatus(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", [message.PCB, message.acceleration.x, message.acceleration.y, message.acceleration.z, message.rotation.x, message.rotation.y, message.rotation.z, message.rotationVelocity, message.RPM, message.surfaceDistance, message.internalTemperature, message.register]);
     });
     socket.on("disconnect", () => console.log(`WHEEL CLIENT STATUS [${socket.id}].\tClosed WebSocket connection.`));
+});
+
+seatWebSocketServer.use((socket, next) => {
+    const authClientHeader = socket.handshake.headers['authorization'];
+    const clientToken = authClientHeader.split(' ')[1];
+    console.log(`SEAT CLIENT STATUS [${socket.id}].\tAuthorization credentials: ${authClientHeader}`);
+    console.log(`SEAT CLIENT STATUS [${socket.id}].\tServer request:\n`, socket.request);
+    if (clientToken === seatTokens["PilotSeat"] || 
+        clientToken === seatTokens["CopilotSeat"]) {
+      return next();
+    }
+    console.log(`SEAT CLIENT STATUS [${socket.id}].\tAuthentication error.`);
+    return next(new Error(`SEAT CLIENT STATUS [${socket.id}].\tAuthentication error.`));
+  });
+
+seatWebSocketServer.on("connect_error", (error) => {
+    console.log(error.message);
+});
+
+seatWebSocketServer.on("connection", (socket) => {
+    console.log(`SEAT CLIENT STATUS [${socket.id}].\tAuthentication succesful.`);
+    socket.emit("sendingDataServerRequest", {name: "Vivas", age: 21});
+    socket.on("sendingDataClientAction", async (message)=>{
+        console.log(message);
+        if(message.PCB)
+            await pool.query("CALL registerSeatRoverStatus(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", [message.PCB, message.acceleration.x, message.acceleration.y, message.acceleration.z, message.rotation.x, message.rotation.y, message.rotation.z, message.surfaceDistance, message.temperature.internal[0], message.temperature.internal[1], message.temperature.external, message.humidity.external, message.RZero.measured, message.RZero.calculated, message.airQualityResistance, message.PPM.measured, message.PPM.calculated, message.atmosphericPressure.measured, message.atmosphericPressure.calculated, message.altitude, message.luxRadiation[0].measured, message.luxRadiation[0].voltage, message.luxRadiation[1].measured, message.luxRadiation[1].voltage, message.magnetism.measured, message.magnetism.voltage, message.UVRadiation.measured, message.UVRadiation.voltage, message.locationService.GPSDateTime, message.locationService.GPSFix.measured, message.locationService.GPSFix.quality, 
+            message.locationService.geographicalCoordinates ? message.locationService.geographicalCoordinates.latitude : null, 
+            message.locationService.geographicalCoordinates ? message.locationService.geographicalCoordinates.longitude : null, 
+            message.locationService.geographicalCoordinates ? message.locationService.geographicalCoordinates.altitude : null, 
+            message.locationService.satelliteAvailability ? message.locationService.satelliteAvailability : null, 
+            message.locationService.GPSAngle ? message.locationService.GPSAngle : null, 
+            message.locationService.antennaStatus ? message.locationService.antennaStatus : null, 
+            message.locationService.knotsSpeed ? message.locationService.knotsSpeed : null, message.register]);
+        });
+    socket.on("disconnect", () => console.log(`SEAT CLIENT STATUS [${socket.id}].\tClosed WebSocket connection.`));
 });
 
 

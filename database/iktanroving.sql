@@ -181,7 +181,9 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`Module` (
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   UNIQUE INDEX `code_UNIQUE` (`code` ASC) VISIBLE,
-  UNIQUE INDEX `denomination_UNIQUE` (`denomination` ASC) VISIBLE)
+  UNIQUE INDEX `denomination_UNIQUE` (`denomination` ASC) VISIBLE, 
+  INDEX `code_INDEX` (`code` ASC) VISIBLE, 
+  INDEX `denomination_INDEX` (`denomination` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -331,7 +333,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `iktanroving`.`Measurement` (
   `identificator` TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `variable` VARCHAR(30) NOT NULL,
-  `units` VARCHAR(10) NOT NULL,
+  `units` VARCHAR(10) NULL,
   `register` DATETIME NOT NULL DEFAULT NOW(),
   `rowUpdate` DATETIME NOT NULL DEFAULT NOW(),
   PRIMARY KEY (`identificator`),
@@ -434,7 +436,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`RoverObservation` (
   `RoverMonitoring_identificator` SMALLINT UNSIGNED NOT NULL,
   `value` DOUBLE NULL,
   `notes` VARCHAR(50) NULL,
-  `register` DATETIME NOT NULL DEFAULT NOW(),
+  `register` DATETIME NOT NULL,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   INDEX `fk_RoverObservation_RoverMonitoring1_idx` (`RoverMonitoring_identificator` ASC) VISIBLE,
@@ -455,7 +457,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`ToolObservation` (
   `ToolMonitoring_identificator` SMALLINT UNSIGNED NOT NULL,
   `value` DOUBLE NULL,
   `notes` VARCHAR(50) NULL,
-  `register` DATETIME NOT NULL DEFAULT NOW(),
+  `register` DATETIME NOT NULL,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   INDEX `fk_ToolObservation_ToolMonitoring1_idx` (`ToolMonitoring_identificator` ASC) VISIBLE,
@@ -476,7 +478,7 @@ CREATE TABLE IF NOT EXISTS `iktanroving`.`CrewmateObservation` (
   `CrewmateMonitoring_identificator` SMALLINT UNSIGNED NOT NULL,
   `value` DOUBLE NULL,
   `notes` VARCHAR(50) NULL,
-  `register` DATETIME NOT NULL DEFAULT NOW(),
+  `register` DATETIME NOT NULL,
   PRIMARY KEY (`identificator`),
   UNIQUE INDEX `identificator_UNIQUE` (`identificator` ASC) VISIBLE,
   INDEX `fk_CrewmateObservation_CrewmateMonitoring1_idx` (`CrewmateMonitoring_identificator` ASC) VISIBLE,
