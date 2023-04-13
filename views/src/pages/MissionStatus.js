@@ -20,6 +20,16 @@ function MissionStatus() {
         <div className="Home-container">
             <MissionStatusNavBar/>
             <MissionStatusBanner/>
+            <RoverPanel/>
+            <MissionStatusFooter/>
+            <MissionStatusNavBarPanel/>
+        </div>
+    );
+}
+
+/*
+            <RoverBanner/>
+            <MissionStatusBanner/>
             <MissionStatusPanel/>
             <GeneralBanner/>
             <GeneralPanel/>
@@ -27,14 +37,8 @@ function MissionStatus() {
             <PilotPanel/>
             <CopilotBanner/>
             <CopilotPanel/>
-            <RoverBanner/>
-            <RoverPanel/>
             <ToolsBanner/>
             <ToolsPanel/>
-            <MissionStatusFooter/>
-            <MissionStatusNavBarPanel/>
-        </div>
-    );
-}
+*/
 
 export default MissionStatus;

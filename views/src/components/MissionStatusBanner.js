@@ -31,6 +31,10 @@ import img28 from "../assets/img/frontpage/28.jpg";
 import img29 from "../assets/img/frontpage/29.jpg";
 import img30 from "../assets/img/frontpage/30.jpg";
 import img31 from "../assets/img/frontpage/31.jpg";
+import tecLogo from "../assets/img/tec-logo.png";
+import herc from "../assets/img/nasa-herc.svg";
+import { ArrowRightCircle } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 import "animate.css";
 import { useNavigate } from "react-router-dom";
 import "./MissionStatusBanner.css";
@@ -95,45 +99,109 @@ export const MissionStatusBanner = () => {
                 <h1>Mission Status</h1>
               </label>
               <label>
-                <h2>Meet the control panel</h2>
+                <h2>Failure is not an option</h2>
               </label>
               <label>
                 <p>
-                  This page is dedicated to everything related to data
-                  visualization. You can be part of this
-                  experience with live data from the Rover and our crewmates. Also, you can watch how the vehicle works through a simulation done with SolidWorks and AutoDesk Maya.
+                  Meet the control panel. You can be part of this
+                  experience with live data from the Rover and our crewmates with the purpose of performance monitoring and data analysis.
                 </p>
               </label>
+              <a href="https://tec.mx/es/ingenieria-y-ciencias" target="_blank" rel="noopener noreferrer"><img id="tecLogo" src={tecLogo} alt="Tecnológico de Monterrey. Escuela de Ingeniería y Ciencias."/></a>
+                  <a href="https://www.nasa.gov/stem/roverchallenge/home/index.html" target="_blank" rel="noopener noreferrer"><img id="herc" src={herc} alt="NASA Human Exploration Rover Challenge."/>
+                  
+                  <button>Learn more about NASA HERC competition<ArrowRightCircle size={25} /></button></a>
             </div>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <div className="topics">
-              <label>Explore our different team workspaces:</label>
+              <label>Monitoring sections:</label>
+              <ol>
+                <li>
               <span>
-                <a href="/#vehicle" onClick={() => navigate("/")}>
-                  Vehicle
+                <a href="/missionStatus#location" onClick={() => navigate("/missionStatus#location")}>
+                  Location tracker service
                 </a>
               </span>
+              </li>
+              <li>
               <span>
-                <a href="/#tool" onClick={() => navigate("/")}>
-                  Tool
+                <a href="/missionStatus#accelerometer-rotation" onClick={() => navigate("/missionStatus#accelerometer-rotation")}>
+                  Acceleration and rotation
                 </a>
               </span>
+              </li>
+              <li>
               <span>
-                <a href="/#telemetry" onClick={() => navigate("/")}>
-                  Telemetry
+                <a href="/missionStatus#altitude" onClick={() => navigate("/missionStatus#altitude")}>
+                  Altitude
                 </a>
               </span>
+              </li>
+              <li>
               <span>
-                <a href="/#home" onClick={() => navigate("/")}>
-                  STEM
+                <a href="/missionStatus#atmosphericPressure" onClick={() => navigate("/missionStatus#atmosphericPressure")}>
+                  Atmospheric pressure
                 </a>
               </span>
+              </li>
+              <li>
               <span>
-                <a href="/#home" onClick={() => navigate("/")}>
-                  Networks
+                <a href="/missionStatus#airQuality" onClick={() => navigate("/missionStatus#airQuality")}>
+                  Air quality
                 </a>
               </span>
+              </li>
+              <li>
+              <span>
+                <a href="/missionStatus#temperature" onClick={() => navigate("/missionStatus#temperature")}>
+                  Temperature
+                </a>
+              </span>
+              </li>
+              <li>
+              <span>
+                <a href="/missionStatus#humidity" onClick={() => navigate("/missionStatus#humidity")}>
+                  Humidity
+                </a>
+              </span>
+              </li>
+              <li>
+              <span>
+                <a href="/missionStatus#magnetism" onClick={() => navigate("/missionStatus#magnetism")}>
+                  Magnetism
+                </a>
+              </span>
+              </li>
+              <li>
+              <span>
+                <a href="/missionStatus#ultravioletRadiation" onClick={() => navigate("/missionStatus#ultravioletRadiation")}>
+                  Ultraviolet radiation
+                </a>
+              </span>
+              </li>
+              <li>
+              <span>
+                <a href="/missionStatus#luxRadiation" onClick={() => navigate("/missionStatus#luxRadiation")}>
+                  Lux radiation
+                </a>
+              </span>
+              </li>
+              <li>
+              <span>
+                <a href="/missionStatus#revolutions" onClick={() => navigate("/missionStatus#revolutions")}>
+                  Revolutions per minute
+                </a>
+              </span>
+              </li>
+              <li>
+              <span>
+                <a href="/missionStatus#surfaceDistance" onClick={() => navigate("/missionStatus#surfaceDistance")}>
+                  Surface distance
+                </a>
+              </span>
+              </li>
+              </ol>
             </div>
           </Col>
         </Row>

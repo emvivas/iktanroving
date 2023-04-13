@@ -929,25 +929,25 @@ END//
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE getRoverSeatsTemperaturePressureRelationship(IN PCB VARCHAR(30), IN competitionYear SMALLINT UNSIGNED, IN TemperatureUnits VARCHAR(10), IN TemperatureDenomination VARCHAR(30), IN PressureUnits VARCHAR(10), IN PressureDenomination VARCHAR(30))
+CREATE PROCEDURE getRoverSeatsXYRelationship(IN PCB VARCHAR(30), IN competitionYear SMALLINT UNSIGNED, IN Variable1 VARCHAR(30), IN Variable1Units VARCHAR(10), IN Variable1Denomination VARCHAR(30), IN Variable2 VARCHAR(30), IN Variable2Units VARCHAR(10), IN Variable2Denomination VARCHAR(30))
 BEGIN
-	SELECT Temperature.Temperature, Pressure.Pressure, Temperature.Time FROM (
-		SELECT RoverObs.value AS "Temperature", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+	SELECT X.X, Y.Y, X.Time FROM (
+		SELECT RoverObs.value AS "X", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
 		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
 		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
 		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
 		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
         INNER JOIN Module AS Module ON RoverImp.Module_identificator = Module.identificator 
-		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "Temperature" AND Measurement.units = TemperatureUnits AND (Module.denomination = TemperatureDenomination OR Module.code = TemperatureDenomination)
-	) AS Temperature INNER JOIN (
-		SELECT RoverObs.value AS "Pressure", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = Variable1 AND Measurement.units = Variable1Units AND (Module.denomination = Variable1Denomination OR Module.code = Variable1Denomination)
+	) AS X INNER JOIN (
+		SELECT RoverObs.value AS "Y", RoverObs.register AS "Time" FROM RoverObservation AS RoverObs 
 		INNER JOIN RoverMonitoring AS RoverMon ON RoverObs.RoverMonitoring_identificator = RoverMon.identificator 
 		INNER JOIN Measurement AS Measurement ON RoverMon.Measurement_identificator = Measurement.identificator 
 		INNER JOIN RoverImplementation AS RoverImp ON RoverMon.RoverImplementation_identificator = RoverImp.identificator 
 		INNER JOIN Rover AS Rover ON RoverImp.Rover_identificator = Rover.identificator 
         INNER JOIN Module AS Module ON RoverImp.Module_identificator = Module.identificator 
-		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = "Atmos. Pressure measured" AND Measurement.units = PressureUnits AND (Module.denomination = PressureDenomination OR Module.code = PressureDenomination)
-	) AS Pressure ON Temperature.Time = Pressure.Time;
+		WHERE Rover.competitionYear = competitionYear AND RoverImp.printedCircuitBoard = PCB AND Measurement.variable = Variable2 AND Measurement.units = Variable2Units AND (Module.denomination = Variable2Denomination OR Module.code = Variable2Denomination)
+	) AS Y ON X.Time = Y.Time;
 END//
 DELIMITER ;
 

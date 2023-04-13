@@ -86,15 +86,23 @@
     transition: 0.3s ease-in-out;
     line-height: 1;
   }
+
+  .missionStatusBanner a {
+    text-decoration: none;
+  }
+
   .missionStatusBanner button:hover svg {
     margin-left: 25px;
   }
 
   .missionStatusBanner .topics{
     float:right;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 0px 10px 15px 25px;
   }
 
   .missionStatusBanner .topics a {
+    display: block;
     margin: 10px 30px 10px 0px;
     font-size: smaller;
     font-weight: 500;

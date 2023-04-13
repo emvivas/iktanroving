@@ -63,7 +63,7 @@ export const Banner = () => {
                   <label><p>We are the team of Mexican students that promotes the participation of young people in high impact engineering projects. We have competed for 10 years in the NASA Human Exploration Rover Challenge competition, we hold the first place prize in the 2022 edition.</p></label>
                   <a href="https://tec.mx/es/ingenieria-y-ciencias" target="_blank" rel="noopener noreferrer"><img id="tecLogo" src={tecLogo} alt="Tecnológico de Monterrey. Escuela de Ingeniería y Ciencias."/></a>
                   <a href="https://www.nasa.gov/stem/roverchallenge/home/index.html" target="_blank" rel="noopener noreferrer"><img id="herc" src={herc} alt="NASA Human Exploration Rover Challenge."/></a>
-                  <button onClick={() => navigate("/missionStatus")}>Examine mission status<ArrowRightCircle size={25} /></button>
+                  <button onClick={() => navigate("/missionStatus")}>Examine the Mission Status Panel<ArrowRightCircle size={25} /></button>
               </div>
           </Col>
           <Col xs={12} md={6} xl={5}>

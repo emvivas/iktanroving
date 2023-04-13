@@ -15,8 +15,8 @@ export const Phrase = () => {
         <Col xs={12} md={6} xl={7}>
                   <figure>
                   <img id="iktanLogo" src={iktanLogo} alt="IKTAN Roving's logo."/>
-                  <label><p><blockquote>"Failure is not an option".</blockquote></p></label>
-                  <figcaption><label><p>IKTAN Roving Team.</p></label></figcaption>
+                  <label><p><blockquote>"Shoot for the Moon. Even if you miss, you'll land among the stars".</blockquote></p></label>
+                  <figcaption><label><p>Norman Vincent Peale, the creator of the theory of positive thinking.</p></label></figcaption>
                   </figure>
           </Col>
           <Col xs={12} md={6} xl={5}>

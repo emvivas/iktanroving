@@ -289,6 +289,7 @@ CALL registerRoverObservation(@id, 7, 3, NULL);*/
 -- delete from roverobservation where identificator > 0;
 -- describe RoverObservation;
 
+<<<<<<< HEAD
 -- select * from roverobservation where value > 10;
 
 
@@ -310,9 +311,9 @@ SELECT RoverObs.value AS "Temperature", RoverObs.register AS "Time" FROM RoverOb
 		ORDER BY RoverObs.register DESC;
         
         
-CALL getRoverSeatsTemperaturePressureRelationship("PilotSeat", 2023, "°C", "DHT22", "Pa", "BMP180");
+CALL getRoverSeatsXYRelationship("PilotSeat", 2023, "Temperature", "°C", "DHT22", "Atmos. Pressure measured", "Pa", "BMP180");
 
-drop procedure getRoverSeatsLocationServiceStatus;
+drop procedure getRoverSeatsXYRelationship;
 
 CALL getRoverSeatsMeasurementTimeSerie(2023, "UV radiation measured", NULL, TRUE, "GY-ML8511");
 
@@ -332,3 +333,8 @@ CALL getRoverSeatsLocationServiceStatus("PilotSeat", 2023, TRUE);
 SELECT CAST(SUBSTRING("192684", 1, LENGTH("192684")-1) AS DOUBLE) AS ExtractString;
 
 -- drop database iktanroving;
+=======
+select * from RoverObservation;
+
+CALL registerWheelRoverStatus("TopRightWheel", 5.0, 3.0, 5.0, 3.7, 2.0, 0.6, 0.0, 3.0, 105.0, 30.0);
+>>>>>>> 245983c50ed9bd42f48182d86435b208c91a9271

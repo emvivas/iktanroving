@@ -22,6 +22,8 @@ export const RoverBanner = () => {
                 <p>
                   This section is solely dedicated to the physical Rover, all
                   data ranging from position, velocity, rotation and any else
+                  This section is solely dedicated to the physical rover, all
+                  data ranging from position, velocity, rotation to and any data
                   that we can recollect so we can enable our mission control
                   team to monitor for hazardous environments and be able to
                   react to it.
@@ -31,30 +33,20 @@ export const RoverBanner = () => {
           </Col>
           <Col xs={12} md={6} xl={5}>
             <div className="topics">
-              <label>Explore our different team workspaces:</label>
+              <label>Monitoring sections:</label>
               <span>
-                <a href="/#vehicle" onClick={() => navigate("/")}>
-                  Vehicle
+                <a href="/missionStatus#rover-in-operation" onClick={() => navigate("/missionStatus#rover-in-operation")}>
+                  Rover in operation
                 </a>
               </span>
               <span>
-                <a href="/#tool" onClick={() => navigate("/")}>
-                  Tool
+                <a href="/missionStatus#rover-crewmate-seats" onClick={() => navigate("/missionStatus#rover-crewmate-seats")}>
+                  Rover crewmate seats
                 </a>
               </span>
               <span>
-                <a href="/#telemetry" onClick={() => navigate("/")}>
-                  Telemetry
-                </a>
-              </span>
-              <span>
-                <a href="/#home" onClick={() => navigate("/")}>
-                  STEM
-                </a>
-              </span>
-              <span>
-                <a href="/#home" onClick={() => navigate("/")}>
-                  Networks
+                <a href="/missionStatus#rover-wheels" onClick={() => navigate("/missionStatus#rover-wheels")}>
+                  Rover wheels
                 </a>
               </span>
             </div>

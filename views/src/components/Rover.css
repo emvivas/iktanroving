@@ -26,7 +26,7 @@
     font-size: 50px;
     font-weight: 350;
     letter-spacing: 0.8px;
-    line-height: 1;
+    line-height: 1.5;
     margin-bottom: 20px;
     display: block;
   }
@@ -35,7 +35,7 @@
     font-size: xx-large;
     font-weight: 350;
     letter-spacing: 0.8px;
-    line-height: 1;
+    line-height: 1.5;
     margin-bottom: 35px;
     margin-top: 90px;
     display: block;
@@ -49,6 +49,10 @@
     width: 96%;
     text-align: justify;
     text-indent: 30px;
+  }
+
+  .rover a{
+    color: black;
   }
 
   .rover ol{
@@ -82,19 +86,38 @@
     font-size: 25px;
     margin-left: 10px;
     transition: 0.3s ease-in-out;
-    line-height: 1;
+    line-height: 1.5;
   }
   .rover button:hover svg {
     margin-left: 25px;
   }
 
-  .rover .mainImage figure {
+  .rover .mainImage img {
     display: inline-block;
-    margin-top: 60px;
+    margin-top: 30px;
   }
 
   .rover .mainImage {
-    margin: 90px 0px 35px 0px;
+    margin: 145px 0px 35px 0px;
+  }
+
+  .rover .secondaryImage img {
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .rover .secondaryImage {
+    margin: 0px;
+  }
+
+  .rover figure figcaption {
+    border: 1px solid #E0E0E0;
+    background-color: #F9F9F9;
+    padding-left: 25px;
+  }
+  
+  .rover figure figcaption label p {
+    text-indent: 0%;
   }
 
   .rover .mixImage{

@@ -32,14 +32,14 @@ const pool = createPool({
 
 const seatTokens = {
                     "PilotSeat": "UGlsb3RTZWF0OjFhcE1MXkZSTjJCQCR2NzQzNHVR",
-                    "CopilotSeat": "VG9wTGVmdFdoZWVsOjNCSFhAWjV2cWluJUdjMyYzY0Uq"
+                    "CopilotSeat": "Q29waWxvdFNlYXQ6YipHIURtVUxOSkg1TDJmTiY1M2o="
                     };
 
 const wheelTokens = {
                     "TopRightWheel": "VG9wUmlnaHRXaGVlbDp0cnIhU0NjRUBYZTJ4VDM1SmxKMw==",
                     "TopLeftWheel": "VG9wTGVmdFdoZWVsOjNCSFhAWjV2cWluJUdjMyYzY0Uq",
-                    "BottomRightWheel": "VG9wUmlnaHRXaGVlbDp0cnIhU0NjRUBYZTJ4VDM1SmxKMw==",
-                    "BottomLeftWheel": "VG9wUmlnaHRXaGVlbDp0cnIhU0NjRUBYZTJ4VDM1SmxKMw=="
+                    "BottomRightWheel": "Qm90dG9tUmlnaHRXaGVlbDprM0w0KldudThqWHgza2w1ZUBrVw==",
+                    "BottomLeftWheel": "Qm90dG9tTGVmdFdoZWVsOnAqZjRkdDR1VEM1QzNnY21aNnVO"
                     };
 
 
@@ -71,16 +71,11 @@ app.set('views', path.join(__dirname, 'public'));
 // Server routes
 
 app.get("/", (request, response)=>{
-
-    response.send("Hello");
+    response.send("Hello!");
 });
+
 app.get("/wheel", (request, response)=>{
     response.render('file.ejs')
-});
-app.get("/ping", async (request, response)=>{
-    const [rows] = await pool.query("CALL registerRoverObservation(@id, 7, 3, NULL);");
-    console.log(rows);
-    response.json(rows);
 });
 
 
@@ -92,7 +87,9 @@ wheelWebSocketServer.use((socket, next) => {
     console.log(`WHEEL CLIENT STATUS [${socket.id}].\tAuthorization credentials: ${authClientHeader}`);
     console.log(`WHEEL CLIENT STATUS [${socket.id}].\tServer request:\n`, socket.request);
     if (clientToken === wheelTokens["TopRightWheel"] || 
-        clientToken === wheelTokens["TopLeftWheel"]) {
+        clientToken === wheelTokens["TopLeftWheel"] || 
+        clientToken === wheelTokens["BottomRightWheel"] || 
+        clientToken === wheelTokens["BottomLeftWheel"]) {
       return next();
     }
     console.log(`WHEEL CLIENT STATUS [${socket.id}].\tAuthentication error.`);
@@ -105,7 +102,7 @@ wheelWebSocketServer.on("connect_error", (error) => {
 
 wheelWebSocketServer.on("connection", (socket) => {
     console.log(`WHEEL CLIENT STATUS [${socket.id}].\tAuthentication succesful.`);
-    socket.emit("sendingDataServerRequest", {name: "Vivas", age: 21});
+    socket.emit("sendingDataServerRequest", {status: "OK"});
     socket.on("sendingDataClientAction", async (message)=>{
         console.log(message);
         if(message.PCB)
@@ -133,7 +130,7 @@ seatWebSocketServer.on("connect_error", (error) => {
 
 seatWebSocketServer.on("connection", (socket) => {
     console.log(`SEAT CLIENT STATUS [${socket.id}].\tAuthentication succesful.`);
-    socket.emit("sendingDataServerRequest", {name: "Vivas", age: 21});
+    socket.emit("sendingDataServerRequest", {status: "OK"});
     socket.on("sendingDataClientAction", async (message)=>{
         console.log(message);
         if(message.PCB)
