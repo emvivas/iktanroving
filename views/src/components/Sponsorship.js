@@ -4,7 +4,8 @@ import iktanLogo from "../assets/img/iktanLogo.png";
 import wurthLogo from "../assets/img/sponsorship/wurth.png";
 import baxterLogo from "../assets/img/sponsorship/baxter.png";
 import madlerLogo from "../assets/img/sponsorship/madler.png";
-import bookoProLogo from "../assets/img/sponsorship/bookoPro.png";
+import royalPrestigeLogo from "../assets/img/sponsorship/royalPrestige.png";
+import yucatanHerbalLogo from "../assets/img/sponsorship/yucatanHerbal.png";
 import servidoresElRusoLogo from "../assets/img/sponsorship/servidoreselruso.png";
 
 import "./Sponsorship.css";
@@ -20,7 +21,8 @@ export const Sponsorship = () => {
             <a href="https://www.tiendawurth.com.mx/" target="_blank" rel="noopener noreferrer"><img src={wurthLogo} alt="Würth México"/></a>
             <a href="https://www.baxter.mx/es/quienes-somos" target="_blank" rel="noopener noreferrer"><img src={baxterLogo} alt="Baxter México"/></a>
             <a href="https://www.maedler.de/" target="_blank" rel="noopener noreferrer"><img src={madlerLogo} alt="Mädler"/></a>
-            <a href="https://www.booko.pro/login/default.aspx?returnURL=%2Fdefault.aspx&culture=es&idioma=es" target="_blank" rel="noopener noreferrer"><img src={bookoProLogo} alt="bookö.pro"/></a>
+            <a href="https://www3.royalprestige.com/mx" target="_blank" rel="noopener noreferrer"><img src={royalPrestigeLogo} alt="Servidores 'El Ruso'."/></a>
+            <a href="https://yucatanamenities.com/" target="_blank" rel="noopener noreferrer"><img src={yucatanHerbalLogo} alt="Servidores 'El Ruso'."/></a>
             <a href="http://www.servidoreselruso.tk/" target="_blank" rel="noopener noreferrer"><img src={servidoresElRusoLogo} alt="Servidores 'El Ruso'."/></a>
           </div>
           </Col>

@@ -59,7 +59,7 @@ export const MissionStatusNavBar = () => {
                 <a href="https://www.facebook.com/IKTANRoving" target="_blank" rel="noopener noreferrer"><img src={navIcon2} alt=""/></a>
                 <a href="https://www.instagram.com/iktan_roving" target="_blank" rel="noopener noreferrer"><img src={navIcon3} alt="" /></a>
               </div>
-              <iframe src="http://localhost:2000/d-solo/Pf6WH5Y4k/mission?orgId=1&from=1680707954939&to=1680729554939&theme=light&panelId=2" width="200" height="70" frameborder="0"></iframe>
+              <iframe src="http://localhost:2000/d-solo/Pf6WH5Y4k/mission?orgId=1&from=1680707954939&to=1680729554939&theme=light&panelId=2" width="200" height="70" frameborder="0" title="Time remaining"></iframe>
             </span>
           </Navbar.Collapse>
         </Container>
