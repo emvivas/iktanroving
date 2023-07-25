@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cui:CirclePage xmlns="http://xamarin.com/schemas/2014/forms"
+				xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+				xmlns:local="clr-namespace:IktanRoving.Extensions" 
+				xmlns:cui ="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
+				x:Class="IktanRoving.Pages.AaLocation"
+				x:Name="Page"
+				BindingContext="{Binding Source={x:Reference Page}, Path=Model}"
+				RotaryFocusObject="{x:Reference pageScroller}">
+    <cui:CircleScrollView x:Name="pageScroller" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HeightRequest="300">
+        <StackLayout>
+            <Label Text="&#xA;Location&#xA;" FontSize="Micro" HorizontalOptions="Center"/>
+            <Label Text="{Binding Longitude, StringFormat='Longitude: {0}'}" HorizontalOptions="Center"/>
+			<Label Text="{Binding Latitude, StringFormat='Latitude: {0}'}" HorizontalOptions="Center"/>
+            <Label Text="{Binding Altitude, StringFormat='Altitude: {0}'}" HorizontalOptions="Center"/>
+        </StackLayout>
+    </cui:CircleScrollView>
+</cui:CirclePage>

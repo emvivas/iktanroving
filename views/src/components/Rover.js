@@ -254,14 +254,14 @@ export const Rover = () => {
         </Row>
         <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
-                  <label><h3 id="networks">SOCIAL NETWORKS AND SPONSORSHIP</h3></label>
+                  <label><h3 id="networks">SOCIAL MEDIA AND SPONSORSHIPS</h3></label>
                   <label><p>Being known by more people is a goal that IKTAN Roving tries to continue achieving. By being known by more people, we can spread this noble project together with all the commented areas, as well as having the opportunity to have more sponsors that support the dream of an entire team.</p></label>
-                  <label><p>That is why the team has the Social Networks and Sponsorships Area who, through the creation of digital content, have allowed the team to be recognized both locally and nationally.</p></label>
+                  <label><p>That is why the team has the Social Media and Sponsorships Area who, through the creation of digital content, have allowed the team to be recognized both locally and nationally.</p></label>
                   <div className="secondaryImage">
                   <figure>
                 <img className="imageSection" src={networks1} alt="Header Img"/>
                     <figcaption>
-                        <label><p>The dissemination of our project through social networks allows more people to offer us their support to represent Mexico in this competition. We thank all those people whom we have brought closer to engineering through our content.</p></label>
+                        <label><p>The dissemination of our project through social media allows more people to offer us their support to represent Mexico in this competition. We thank all those people whom we have brought closer to engineering through our content.</p></label>
                     </figcaption>
                 </figure>
                 </div>

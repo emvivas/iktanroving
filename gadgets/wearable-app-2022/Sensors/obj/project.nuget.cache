@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "h6V6wjv9CHv2PSi3E946bzot/7Nbs+YB/V1q9y9Eqh7FfChlNfw/vUtIb2umH86tfs6gYiJ244Vt7k+ISkYY1Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vivas\\source\\repos\\IktanRoving\\Sensors\\IktanRoving.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vivas\\.nuget\\packages\\harfbuzzsharp\\2.6.1.1-preview.50\\harfbuzzsharp.2.6.1.1-preview.50.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\skiasharp\\1.68.2-preview.50\\skiasharp.1.68.2-preview.50.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\skiasharp.harfbuzz\\1.68.2-preview.50\\skiasharp.harfbuzz.1.68.2-preview.50.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\skiasharp.views\\1.68.2-preview.50\\skiasharp.views.1.68.2-preview.50.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\skiasharp.views.forms\\1.68.2-preview.50\\skiasharp.views.forms.1.68.2-preview.50.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\tizen.net\\6.0.0.14995\\tizen.net.6.0.0.14995.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\tizen.net.api4\\4.0.1.14164\\tizen.net.api4.4.0.1.14164.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\tizen.wearable.circularui\\1.4.0\\tizen.wearable.circularui.1.4.0.nupkg.sha512",
+    "C:\\Users\\vivas\\.nuget\\packages\\xamarin.forms\\4.4.0.991757\\xamarin.forms.4.4.0.991757.nupkg.sha512"
+  ],
+  "logs": []
+}

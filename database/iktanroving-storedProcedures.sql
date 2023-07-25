@@ -11,7 +11,7 @@ END//
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE registerMeasurement(OUT _identificator SMALLINT UNSIGNED, _variable VARCHAR(50), _units VARCHAR(50))
+CREATE PROCEDURE registerMeasurement(OUT _identificator TINYINT UNSIGNED, _variable VARCHAR(50), _units VARCHAR(50))
 BEGIN
 	SET _identificator = NULL;
     CALL validateString(_variable);
@@ -92,7 +92,7 @@ END//
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE registerParticipant(OUT _identificator TINYINT UNSIGNED, IN _code VARCHAR(25), IN _email VARCHAR(320), _telephone VARCHAR(25), _name VARCHAR(50), _firstLastname VARCHAR(50), _secondLastname VARCHAR(50), _sex CHAR, _birthday DATE, _password VARCHAR(100), _countryNumber SMALLINT UNSIGNED, _state VARCHAR(30), _city VARCHAR(30), _zip VARCHAR(15), _location VARCHAR(150))
+CREATE PROCEDURE registerParticipant(OUT _identificator SMALLINT UNSIGNED, IN _code VARCHAR(25), IN _email VARCHAR(320), _telephone VARCHAR(25), _name VARCHAR(50), _firstLastname VARCHAR(50), _secondLastname VARCHAR(50), _sex CHAR, _birthday DATE, _password VARCHAR(100), _countryNumber SMALLINT UNSIGNED, _state VARCHAR(30), _city VARCHAR(30), _zip VARCHAR(15), _location VARCHAR(150))
 BEGIN
 	SET _identificator = NULL;
     CALL validateString(_code);
@@ -141,7 +141,7 @@ END//
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE registerRoverObservation(OUT _identificator SMALLINT UNSIGNED, IN _RoverMonitoring_identificator SMALLINT UNSIGNED, IN _value DOUBLE, IN _notes VARCHAR(50), IN _register DATETIME)
+CREATE PROCEDURE registerRoverObservation(OUT _identificator BIGINT UNSIGNED, IN _RoverMonitoring_identificator SMALLINT UNSIGNED, IN _value DOUBLE, IN _notes VARCHAR(50), IN _register DATETIME)
 BEGIN
 	SET _identificator = NULL;
     CALL validateString(_notes);

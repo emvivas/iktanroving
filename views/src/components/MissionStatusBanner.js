@@ -186,20 +186,6 @@ export const MissionStatusBanner = () => {
                 </a>
               </span>
               </li>
-              <li>
-              <span>
-                <a href="/missionStatus#revolutions" onClick={() => navigate("/missionStatus#revolutions")}>
-                  Revolutions per minute
-                </a>
-              </span>
-              </li>
-              <li>
-              <span>
-                <a href="/missionStatus#surfaceDistance" onClick={() => navigate("/missionStatus#surfaceDistance")}>
-                  Surface distance
-                </a>
-              </span>
-              </li>
               </ol>
             </div>
           </Col>
