@@ -3,7 +3,7 @@
 The development of telemetry area for the Mexican team participating in the NASA Human Exploration Rover Challenge 2022 and 2023 editions, IKTAN Roving, involved months of teamwork where knowledge of: Data Science; Internet of Things; circuits and sensors assembly; microcontroller programming; Printed Circuit Board Design; Data Analytics; Computer Aided Design for 3D printed components; full stack web programming; development of android applications for gadgets; computer vision and machine learning; design and implementation of relational databases; and web server administration.
 
 The telemetry implemented in the vehicle contributed to the team being deserving of the awards achieved in the 2022 and 2023 editions at NASA U.S. Space & Rocket Center, Huntsville, Alabama, United States of America: 2022 First Place Overall Winner, 2022 Ingenuity Award, 2023 Ingenuity Award, and 2023 Crash and Burn Award.
-
+<br><br>
 ![iktan-roving](https://github.com/vivasrguez/iktanroving/assets/85045551/f799f656-d70e-4742-b167-aec9563d08e8)
 
 ![nasa-herc](https://github.com/vivasrguez/iktanroving/assets/85045551/6121c923-fb9d-4e50-8ccf-de82222e7558)
